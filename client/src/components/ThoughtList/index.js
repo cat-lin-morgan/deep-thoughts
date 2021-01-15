@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const ThoughtList = ({ thoughts, title }) => {
-
-    if (!thoughts.length) {
-        return <h3>No Thoughts, Empty Head</h3>;
-    }
+    // console.log(thoughts);
+    // if (!thoughts.length) {
+    //     return <h3>No Thoughts, Empty Head</h3>;
+    // }
 
     return (
         <div>
