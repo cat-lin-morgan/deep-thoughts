@@ -38,22 +38,26 @@ const resolvers = {
     },
     Mutation: {
         addUser: async (parent, args) => {
+            console.log(args);
             const user = await User.create(args);
             const token = signToken(user);
-
+            console.log('test');
             return { user, token };
         },
         login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+            // console.log(email, password);
+            // console.log(await User.find({email:'test6@test.com'}));
 
+            const user = await User.findOne({ email });
+             console.log(user);
             if(!user) {
-                throw new AuthenticationError('Incorrect Info, Sir or Madam');
+                throw new AuthenticationError('1Incorrect Info, Sir or Madam');
             }
 
             const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect Info, Sir or Madam')
+                throw new AuthenticationError('2Incorrect Info, Sir or Madam')
             }
             const token = signToken(user);
             return { token, user };
